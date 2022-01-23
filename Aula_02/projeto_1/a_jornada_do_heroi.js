@@ -5,11 +5,11 @@ let nao = 0;
 
 const perguntas = {
     inicio: "", 
-    ask1: "A",
-    ask2: "B",
-    ask3: "C",
-    ask4: "D",
-    ask5: "E",
+    ask1: "A ",
+    ask2: "B ",
+    ask3: "C ",
+    ask4: "D ",
+    ask5: "E ",
    
 }  
 const resultados = {
@@ -30,8 +30,13 @@ const historia = {
 }
 for(let i of [1,2,3,4,5]){
    
-    let resposta = prompt(perguntas[`ask${i}`])
-        console.log(historia[`parte${i}`])
+    console.log(perguntas[`ask${i}`])
+    let resposta = prompt("Digite sim ou não: ")
+    while(resposta != 'sim' && resposta != 'nao'){
+        resposta = prompt("Digite sim ou não: ")
+    }
+
+    console.log(historia[`parte${i}`])
     if(resposta == 'sim'){
         sim += 1 
     }else{
