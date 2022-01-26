@@ -2,24 +2,13 @@ var prompt = require('prompt-sync')();
 
 let sim = 0;
 let nao = 0;
-cont = 0;
 
-const histInicio = ("");
-const q1 = ("");
-const hist2 = ("");
-const q2 = ("");
-const hist3 = ("");
-const q3 = ("");
-const hist4 = ("");
-const q4 = ("");
-const hist5= ("");
-const q5 = ("");
-const resultado0s = ("");
-const resultado1e2s = ("");
-const resultado3s = ("");
-const resultado4s = ("");
-const resultado5s = ("");
+const historia = ["h1","h2","h3","h4","h5"] 
 
+const perguntas = ["p1","p2","p3","p4","p5"]
+
+const resultados = ["resultado1","resultado2","resultado3","resultado4","resultado5"]
+  
 
 for(var i = 0; i < perguntas.length; i++){
     console.log(perguntas[i])
@@ -31,23 +20,23 @@ for(var i = 0; i < perguntas.length; i++){
     console.log(historia[i])
     if(resposta == 'sim'){
         sim += 1 
-    } else {
+    }else{
         nao += 1
     }
 }
     if(sim === 0){
-        console.log(resultado0s)
+        console.log(resultado[0])
     }
     if(sim === 1){
-        console.log(resultado1e2s)
+        console.log(resultado[1])
     }
     if(sim === 2){
-        console.log(resultado3s)
+        console.log(resultado[2])
     }
     if(sim === 3){
-        console.log(resultado4s)
+        console.log(resultado[3])
     }
     if(sim === 4){
-        console.log(resultado5s)
+        console.log(resultado[4])
     }
    
