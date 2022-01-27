@@ -4,14 +4,14 @@ var prompt = require('prompt-sync')();
 // 2 - e crie um array contando todos os números sequenciais do primeiro até o segundo, 
 // 3 - independente de ser maior ou menor.
 
-const num1 = 4;
-const num2 = 10;
+const num1 = +prompt('Digite um número: ');
+const num2 = +prompt('Digite outro número: ');
 
 const numeros = [];
 
-for (let i = 0; i < num2.length; i++) {
-    console.log(numeros)    
-    while(num1 <= num2){
-        console.log(numeros)
-    }
+for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    
 }
+  
+    

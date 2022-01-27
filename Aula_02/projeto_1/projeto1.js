@@ -30,7 +30,7 @@ const perguntas = [
 
 const resultados = [
     //resultado 0 sim
-    `\n${nome}, você continua doente de amor e não procurou remédio na vida noturna!`,
+    `\n${nome}, você continua doente de amor e não quis procurar remédio na vida noturna... ÔÔH SOFRÊNCIA!`,
     //resultado 1 ou 2 sim
     `\n${nome}, você até tentou procurar a cura do mal de amor, mas não conseguiu encontrar!`,
     //resultado 3 sim
