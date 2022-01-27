@@ -32,7 +32,7 @@ const resultados = [
     //resultado 0 sim
     `\n${nome}, você continua doente de amor e não procurou remédio na vida noturna!`,
     //resultado 1 ou 2 sim
-    `\n${nome}, você até tentou procurar a cura do mal, mas não conseguiu encontrar!`,
+    `\n${nome}, você até tentou procurar a cura do mal de amor, mas não conseguiu encontrar!`,
     //resultado 3 sim
     `\n${nome}, você chegou na boate azul, mas logo foi embora um pouco embriagado.`,
     //resultado 4 sim
