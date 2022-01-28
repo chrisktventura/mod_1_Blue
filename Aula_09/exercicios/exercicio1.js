@@ -9,8 +9,9 @@ const num2 = +prompt('Digite outro número: ');
 
 const numeros = [];
 
-for (let index = 0; index < array.length; index++) {
-    const element = array[index];
+for (let i = num1; i < num2; i--) {
+    numeros.values
+    
     
 }
   
