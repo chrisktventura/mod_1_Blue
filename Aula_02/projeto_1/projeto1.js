@@ -4,7 +4,7 @@ let sim = 0;
 
 const historia = [
     // Inicio
-    `\nDoente de amor, ${nome} foi em busca de um remédio na vida noturna, como uma flor da noite em uma bote ali da zona sul...`,
+    `\nDoente de amor, ${nome} foi em busca de um remédio na vida noturna, como uma flor da noite em uma boate ali da zona sul...`,
     // Historia parte 1
     `\n${nome}, ira tentar curar a dor deste amor na boate azul... E quando a noite vai se agonizando no clarão da aurora... Os integrantes da vida noturna se foram dormir...`,
     // Historia parte 2
