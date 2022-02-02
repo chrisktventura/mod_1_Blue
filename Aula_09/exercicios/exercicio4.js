@@ -5,7 +5,17 @@ var prompt = require('prompt-sync')();
 // Faça um programa que peça o número total de eleitores. 
 // Peça para cada eleitor votar e ao final mostrar o número de votos de cada candidato.
 
-let candidatos = ["candidato1", "candidato2", "candidato3"];
-let totalEleitores = +prompt("Digite a quantidade de eleitores: ");
-let votos = 0;
+let candidato1 = 0;
+let candidato2 = 0;
+let candidato3 = 0;
+
+let eleitores = +();
+
+for(let i = 0; i < eleitores;){
+    console.log()
+    let voto = +prompt('')
+    if(voto == 1){
+        candidato1++;
+    }else if
+}
 
