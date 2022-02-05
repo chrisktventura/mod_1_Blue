@@ -5,14 +5,13 @@ let cont = 0;
 let placarJ = 0;
 let placarC = 0;
 let desCont = 0;
-let escolhas = ["pedra","papel","tesoura"];
+let escolhas = ["pedra", "papel", "tesoura"];
 
 while (true) {
   if (desCont === 1) {
     break;
   }
-  for(i = 0; i < rodadas; i++) {
-    console.log("rodadas --> ", rodadas);
+  for (i = 0; i < rodadas; i++) {
     console.log("#### JokenPô ####\n");
     console.log("Pedra - Papel  - Tesoura\n");
 
@@ -22,12 +21,14 @@ while (true) {
     // lógica de escolha do jogador - 1
     let jogador = prompt("Faça sua jogada: ").trim().toLowerCase();
     console.log();
-    // validação de entrada 
+    // validação de entrada
     while (jogador != "pedra" && jogador != "papel" && jogador != "tesoura") {
       console.log("Opção Inválida");
-      jogador = prompt("Escolha uma opção válida: ").trim().toLowerCase();
+      jogador = prompt("Escolha uma opção válida: Pedra - Papel - Tesoura")
+        .trim()
+        .toLowerCase();
     }
-     // lógica de escolha jogador - 2
+    // lógica de escolha jogador - 2
     if (jogador === "pedra") {
       console.log("Jogador escolheu: Pedra!\n");
     } else if (jogador === "papel") {
@@ -35,7 +36,7 @@ while (true) {
     } else if (jogador === "tesoura") {
       console.log("Jogador escolheu: Tesoura\n");
     }
-  
+
     // lógica de escolha computador - 1
     if (computador == 1) {
       console.log("Computador escolheu: Pedra!\n");
@@ -45,25 +46,29 @@ while (true) {
       console.log("Computador escolheu: Tesoura!\n");
     }
     // comparação de resultados
-    if (jogador == "pedra" && computador == 1 || jogador == "papel" && computador == 2 || jogador == "tesoura" && computador == 3 ) {
-      cont++
+    if (
+      (jogador == "pedra" && computador == 1) ||
+      (jogador == "papel" && computador == 2) ||
+      (jogador == "tesoura" && computador == 3)
+    ) {
+      cont++;
       console.log(`Empatou a rodada ${cont}`);
-      
     } else if (
       (jogador == "pedra" && computador == 3) ||
       (jogador == "papel" && computador == 1) ||
       (jogador == "tesoura" && computador == 2)
     ) {
       placarJ++;
-      cont++
+      cont++;
       console.log(`Jogador vence a rodada ${cont} !`);
     } else {
       placarC++;
-      cont++
+      cont++;
       console.log(`Computador vence a rodada ${cont} !`);
     }
-    console.log(`\n______ Placar _____\nJogador  ${placarJ}  X  ${placarC}  Computador \n`);
-
+    console.log(
+      `\n______ Placar _____\nJogador  ${placarJ}  X  ${placarC}  Computador \n`
+    );
   } // placar
   if (placarC > placarJ) {
     console.log(
