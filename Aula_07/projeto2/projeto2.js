@@ -13,9 +13,12 @@ while (true) {
   }
   for (i = 0; i < rodadas; i++) {
     console.log("#### JokenPô ####\n");
+    console.log(
+      "Para jogar basta escolher uma das opções abaixo e digitar.\nBoa sorte!\n"
+    );
     console.log("Pedra - Papel  - Tesoura\n");
 
-    // lógica
+    // lógica computador aleatório
     const computador = Math.floor(Math.random() * 3 + 1);
 
     // lógica de escolha do jogador - 1
@@ -87,6 +90,5 @@ while (true) {
     placarC = 0;
     placarJ = 0;
     rodadas = +prompt("Escolha quantas rodadas deseja jogar: ");
-    console.log("rodadas --> ", rodadas);
   }
 }
