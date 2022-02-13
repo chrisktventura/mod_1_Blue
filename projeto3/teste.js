@@ -30,7 +30,7 @@ do {
   const historia = [
     "\n   Há muito tempo, um casal que não conseguia engravidar,\nmisteriosamente tiveram uma criança. Quando ele tinha 5 anos,\nseu pai foi chamado para ir para a guerra para defender o seu\nreino. Quando guerra acabou o reino foi tomado por um mago\nsombrio,que se tornou rei, escravizando seu povo. Sua mãe foi\nraptada e transformada em escrava. Ele ficou sozinho vivendo\ncom o pouco que seu povo dava para ele.Todo dia ele ia para a\nfloresta tentar procurar algo para comer, certo dia na suas\ncaminhadas ele encontrou um livro velho. Curioso, começou a\nler esse livro e começou aprender magias. Com essas magias que\nele aprendeu, conseguia colher frutas nas mais altas árvores da\nFloresta. Ele então passou a ir sempre até o lugar mais secreto e\nfazer suas práticas para se fortalecer.\n",
     "\n   Com o tempo, ele conseguiu planejar a retomada de seu reino, criando estratégias para invadir o castelo, de forma que o mago sombrio não percebesse",
-    "PARTE III",
+    "",
   ];
   let dia = 1;
   let dias = 10;
@@ -81,11 +81,11 @@ do {
       } else {
         this.poder -= poder;
       }
-    },checkxp: (exp) => {
-      if (exp > 100){
-
+    },
+    checkxp: (exp) => {
+      if (exp > 100) {
       }
-    }
+    },
   };
 
   function status() {
@@ -95,79 +95,105 @@ do {
     } else if (personagem.fome < 1) {
       personagem.fome == 0;
       console.log(`Jovem Místico está morrendo de fome!`);
-    }
+    } else if (personagem.stamina > 99) {
+      personagem.stamina == 100;
+      console.log(`Jovem está recuperado.`);
+    } else if (personagem.stamina < 5) {
+      console.log(`Jovem precisa descansar.`);
+    } else if (personagem.mana > 99) {
+      personagem.mana == 100;
+      console.log(`Sua mana está carregada.`);
+    } else if (personagem.mana < 1) {
+      personagem.mana == 0;
+      console.log(`Jovem precisa recuperar mana para continuar.`);
+    } else if (personagem.poder > 149) {
+      personagem.poder == 150;
+      console.log(`Jovem tem poder suficiente para retomar seu reino.`);
+    } else if (personagem.poder < 150)
+      console.log(
+        `jovem não tem poder suficiente, talvez precise praticar e estudar mais.`
+      );
+    console.log();
   }
 
   console.log();
 
-  for (let i = 0; i < dias; i++) {
+  for (let i = 0; i < historia.length; i++) {
     console.log("------------------------");
     console.log(historia[i]);
 
-    do {
-      console.log("--------------------------------------");
-      console.log(`
+    console.log("--------------------------------------");
+    console.log(`
 Aqui estão as informações sobre o personagem:
 
+Informações de Personagem
+
 Nível ${personagem.nivel},
-${personagem.fome}% Satisfeito,
-${personagem.mana}% de Mana,
-${personagem.ouro} Moedas de Ouro,
+${personagem.fome}% Satisfeito
+
+${personagem.mana}% de Mana
+
+${personagem.ouro} Moedas de Ouro
+
 ${personagem.stamina}% de Stamina
+
 ${personagem.poder} pontos de poder`);
 
+    console.log();
+    resposta = prompt(`Escolha entre comer, estudar, praticar, dormir: `)
+      .toLowerCase()
+      .trim();
+    if (
+      resposta !== "alimentar" &&
+      resposta !== "estudar" &&
+      resposta !== "praticar" &&
+      resposta !== "dormir"
+    ) {
+      console.clear();
+      console.log(`Digitou errado!`);
+    } else if (resposta == "alimentar") {
+      console.log(comer[i]);
       console.log();
-      resposta = prompt(
-        `Escolha entre comer, estudar, praticar, dormir: `
-      ).toLowerCase().trim();
-      if (
-        resposta !== "comer" &&
-        resposta !== "estudar" &&
-        resposta !== "praticar" &&
-        resposta !== "dormir"
-      ) {
-        console.clear();
-        console.log(`Digitou errado!`);
-      } else if (resposta == "comer") {
-        console.log(comer[i]);
-        console.log();
-        personagem.ctrlMana(10, true);
-        personagem.ctrlFome(10, true);
-        personagem.ctrlStamina(20, true);
-        console.log();
-        status();
+      personagem.ctrlMana(10, true);
+      personagem.ctrlFome(10, true);
+      personagem.ctrlStamina(20, true);
+      console.log();
+      status();
+      
 
-        break;
-      } else if (resposta == "estudar") {
-        console.log();
-        console.log(estudar[i]);
-        console.log();
-        personagem.ctrlMana(10, false);
-        personagem.ctrlFome(20, false);
-        personagem.ctrlPoder(5, true);
-        status();
-        break;
-      } else if (resposta == "praticar") {
-        console.log();
-        console.log(pratica[i]);
-        console.log();
-        personagem.ctrlMana(10, false);
-        personagem.ctrlFome(20, false);
-        personagem.ctrlStamina(5, false);
-        personagem.ctrlOuro(30, true);
-        personagem.ctrlPoder(10, true);
-        status();
-        break;
-      } else if (resposta == "dormir") {
-        console.log();
-        console.log(dormir[i]);
-        console.log();
-        personagem.ctrlFome(20, false);
-        personagem.ctrlStamina(10, true);
-        status();
-        break;
-      }
-    } while (true);
+      break;
+    } else if (resposta == "estudar") {
+      console.log();
+      console.log(estudar[i]);
+      console.log();
+      personagem.ctrlMana(10, false);
+      personagem.ctrlFome(20, false);
+      personagem.ctrlPoder(5, true);
+      status();
+  
+      break;
+    } else if (resposta == "praticar") {
+      console.log();
+      console.log(pratica[i]);
+      console.log();
+      personagem.ctrlMana(10, false);
+      personagem.ctrlFome(20, false);
+      personagem.ctrlStamina(5, false);
+      personagem.ctrlOuro(30, true);
+      personagem.ctrlPoder(10, true);
+      status();
+      console.log(``);
+      break;
+    } else if (resposta == "dormir") {
+      console.log();
+      console.log(dormir[i]);
+      console.log();
+      personagem.ctrlFome(20, false);
+      personagem.ctrlStamina(10, true);
+      status();
+      break;
+    }
+    while (true);
   }
   personagem.ctrlNivel();
 
@@ -186,16 +212,21 @@ ${personagem.poder} pontos de poder`);
       console.log();
       resposta = prompt(
         `Escolha entre se alimentar, estudar, praticar, dormir: `
-      ).toLowerCase().trim();
+      )
+        .toLowerCase()
+        .trim();
       if (
-        resposta !== "comer" &&
+        resposta !== "alimentar" &&
         resposta !== "estudar" &&
         resposta !== "praticar" &&
         resposta !== "dormir"
       ) {
         console.clear();
         console.log(`Digitou errado!`);
-      } else if (resposta == "comer") {
+        resposta = prompt(
+          `Escolha uma das opções: alimentar, estudar, praticar, dormir \n`
+        );
+      } else if (resposta == "alimentar") {
         console.log(comer[i]);
         console.log();
         personagem.ctrlFome(10, true);
@@ -228,8 +259,8 @@ ${personagem.poder} pontos de poder`);
         personagem.ctrlFome(20, false);
         status();
         break;
-     
-      }   if (personagem.poder < 150) {
+      }
+      if (personagem.poder < 150) {
         console.log(
           `Talvez você precise de mais poder para continuar a avançar...`
         );
@@ -237,12 +268,11 @@ ${personagem.poder} pontos de poder`);
     } while (true);
   }
   while (desejaContinuar !== "sim" && desejaContinuar !== "nao") {
-    desejaContinuar = prompt(`Deseja jogar novamente? `).toLowerCase();
+    desejaContinuar = prompt(`Deseja jogar novamente? `).toLowerCase().trim();
     if (desejaContinuar == "nao") {
       console.clear();
       console.log(`Ok! Até a próxima!`);
     } else {
-      console.clear();
       console.log(`Vamos lá!`);
     }
   }
