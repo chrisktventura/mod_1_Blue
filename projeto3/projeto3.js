@@ -343,7 +343,7 @@ Inglês: ${conhecimento.ing} %`);
   `);
       materia = prompt(`Escolha: `).trim();
     }
-    // for (let t = 0; t < 3; t++){
+   
     if (materia == 1) {
       for (let index = conhecimento.ultPort; index < port.length; index++) {
         // index recebe ultima posição de português (indice da pergunta)
