@@ -297,9 +297,9 @@ c) Boa Vista
 d) Natal `,
 ];
 const ing = [];
-
+let turno = ["Turno Manhã", "Turno Tarde", "Turno Noite"];
 let sair = false;
-let diaProva = 15;
+let diaProva = 5;
 let dia = 0;
 let resultados = {
   // objeto para exibição de resultados ao final da aplicação
@@ -311,19 +311,19 @@ while (true) {
   for (let i = 0; i < diaProva; i++) {
     dia++;
     diaProva--;
+    for (let i = 0; i < turno.length; i++) {
     console.log(`Bem-Vindo ao simulador de estudos.`);
 
-    console.log(`Dia ${dia}, faltam ${diaProva} dias para a Prova`);
+    console.log(`${turno[i]} dia ${dia}`);
 
     console.log(
       "---------------------------------------------------------------"
     );
     console.log(`Aqui está os seus resultados: 
-Português: ${conhecimento.port} %
-Matemática: ${conhecimento.mat} %
-História: ${conhecimento.hist} %
-Geografia: ${conhecimento.geo} %
-Inglês: ${conhecimento.ing} %`);
+
+Português: ${conhecimento.port} %   Matemática: ${conhecimento.mat} %
+História: ${conhecimento.hist} %    Geografia: ${conhecimento.geo} %
+               Inglês: ${conhecimento.ing} %\n`);
 
     console.log(`Qual matéria você deseja estudar? 
 
@@ -472,7 +472,7 @@ Inglês: ${conhecimento.ing} %`);
     }
   }
 }
-
+}
 function validaResposta(resposta) {
   while (
     resposta != "a" &&
