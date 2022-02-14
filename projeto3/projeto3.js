@@ -296,7 +296,81 @@ b) Rio Branco
 c) Boa Vista
 d) Natal `,
 ];
-const ing = [];
+const ing = [
+  
+  `1) Qual das alternativas apresenta apenas advérbios de tempo?
+
+a) already, always, then, above  
+b) lately, still, next, finaly  
+c) first, here, rarely, yet  
+d) below, before, never, hard  
+e) first, already, usually, yet`,        
+//-------------------------------------------------------------------
+
+  `2) Em qual das alternativas a seguir o advérbio está incorreto?
+
+a) She hasn’t met them yet.  
+b) We were rather hot yesterday.  
+c) Jamie is waiting for us always.  
+d) They work very hardly on Fridays.  
+e) My parents will travel by airplane.`,
+//------------------------------------------------------------------
+
+ `3) Para dizermos "abrir uma exceção" em inglês, podemos usar:
+
+a) Open an exception
+b) Start an exception
+c) Make an exception
+d) Close an exception`,
+//------------------------------------------------------------------
+
+ `4) Qual a melhor tradução para "I made up my mind. I'll stay here" ?
+
+a) Eu me decidi. Vou ficar aqui.
+b) Eu estou confuso. Vou ficar aqui.
+c) Eu me decidi. Vou sair daqui.
+d) Eu tive um sonho. Vou sair daqui.`,
+//---------------------------------------------------------------------
+
+ `5) No trecho, "Brazilians nationwide pack churches to pray", qual a melhor tradução para "pack":
+
+a) Lotam
+b) Pintam
+c) Destroem
+d) Criticam `,
+//----------------------------------------------------------------------
+
+ `6) Os comparativos de superioridade de "good" e "far" podem ser, respectivamente:
+
+a) Gooder, farer
+b) Gooder, farther
+c) Better, farer
+d) Better, farther `,
+
+//----------------------------------------------------------------------
+
+ `7) He lets his children want...basic things, such as food and clothes.
+
+a) For
+b) By
+c) Into
+d) On `,
+
+ `8) I did everything that I ______, but we lost the match.
+
+ a) can
+ b) can’t
+ c) may
+ d) could `,
+
+ `9)The show _______ go on.
+
+ a) can
+ b) shouldn’t
+ c) could
+ d) must  `,
+];
+
 let turno = ["Turno Manhã", "Turno Tarde", "Turno Noite"];
 let sair = false;
 let diaProva = 5;
