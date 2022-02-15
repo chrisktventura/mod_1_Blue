@@ -297,15 +297,14 @@ c) Boa Vista
 d) Natal `,
 ];
 const ing = [
-  
   `1) Qual das alternativas apresenta apenas advérbios de tempo?
 
 a) already, always, then, above  
 b) lately, still, next, finaly  
 c) first, here, rarely, yet  
 d) below, before, never, hard  
-e) first, already, usually, yet`,        
-//-------------------------------------------------------------------
+e) first, already, usually, yet`,
+  //-------------------------------------------------------------------
 
   `2) Em qual das alternativas a seguir o advérbio está incorreto?
 
@@ -314,56 +313,56 @@ b) We were rather hot yesterday.
 c) Jamie is waiting for us always.  
 d) They work very hardly on Fridays.  
 e) My parents will travel by airplane.`,
-//------------------------------------------------------------------
+  //------------------------------------------------------------------
 
- `3) Para dizermos "abrir uma exceção" em inglês, podemos usar:
+  `3) Para dizermos "abrir uma exceção" em inglês, podemos usar:
 
 a) Open an exception
 b) Start an exception
 c) Make an exception
 d) Close an exception`,
-//------------------------------------------------------------------
+  //------------------------------------------------------------------
 
- `4) Qual a melhor tradução para "I made up my mind. I'll stay here" ?
+  `4) Qual a melhor tradução para "I made up my mind. I'll stay here" ?
 
 a) Eu me decidi. Vou ficar aqui.
 b) Eu estou confuso. Vou ficar aqui.
 c) Eu me decidi. Vou sair daqui.
 d) Eu tive um sonho. Vou sair daqui.`,
-//---------------------------------------------------------------------
+  //---------------------------------------------------------------------
 
- `5) No trecho, "Brazilians nationwide pack churches to pray", qual a melhor tradução para "pack":
+  `5) No trecho, "Brazilians nationwide pack churches to pray", qual a melhor tradução para "pack":
 
 a) Lotam
 b) Pintam
 c) Destroem
 d) Criticam `,
-//----------------------------------------------------------------------
+  //----------------------------------------------------------------------
 
- `6) Os comparativos de superioridade de "good" e "far" podem ser, respectivamente:
+  `6) Os comparativos de superioridade de "good" e "far" podem ser, respectivamente:
 
 a) Gooder, farer
 b) Gooder, farther
 c) Better, farer
 d) Better, farther `,
 
-//----------------------------------------------------------------------
+  //----------------------------------------------------------------------
 
- `7) He lets his children want...basic things, such as food and clothes.
+  `7) He lets his children want...basic things, such as food and clothes.
 
 a) For
 b) By
 c) Into
 d) On `,
 
- `8) I did everything that I ______, but we lost the match.
+  `8) I did everything that I ______, but we lost the match.
 
  a) can
  b) can’t
  c) may
  d) could `,
 
- `9)The show _______ go on.
+  `9)The show _______ go on.
 
  a) can
  b) shouldn’t
@@ -375,9 +374,12 @@ let turno = ["Turno Manhã", "Turno Tarde", "Turno Noite"];
 let sair = false;
 let diaProva = 5;
 let dia = 0;
-let resultados = {
-  // objeto para exibição de resultados ao final da aplicação
-};
+let resultado = [
+  "Infelizmente você reprovou. Precisa estudar mais!",
+  "Você alcançou uma boa pontuação, mas pode melhorar!",
+  "Parabéns! Você com certeza vai mandar muito bem na prova!",
+]; // ARRAY para exibição de resultados ao final da aplicação
+
 while (true) {
   if (sair) {
     break;
@@ -385,167 +387,185 @@ while (true) {
   for (let i = 0; i < diaProva; i++) {
     dia++;
     diaProva--;
+
     for (let i = 0; i < turno.length; i++) {
-    console.log(`Bem-Vindo ao simulador de estudos.`);
+      console.log(`Bem-Vindo ao simulado de estudos básicos.`);
 
-    console.log(`${turno[i]} dia ${dia}`);
+      console.log(`${turno[i]} dia ${dia}`);
 
-    console.log(
-      "---------------------------------------------------------------"
-    );
-    console.log(`Aqui está os seus resultados: 
+      console.log(
+        "---------------------------------------------------------------"
+      );
+      console.log(`Aqui está os seus resultados: 
 
-Português: ${conhecimento.port} %   Matemática: ${conhecimento.mat} %
-História: ${conhecimento.hist} %    Geografia: ${conhecimento.geo} %
-               Inglês: ${conhecimento.ing} %\n`);
+Português: ${conhecimento.port} %
+Matemática: ${conhecimento.mat} %
+História: ${conhecimento.hist} %
+Geografia: ${conhecimento.geo} %
+Inglês: ${conhecimento.ing} %\n`);
 
-    console.log(`Qual matéria você deseja estudar? 
+      console.log(`Qual matéria você deseja estudar? 
 
       1) Português   2) Matemática   3) História   4) Geografia   5) Inglês 
       `);
-    materia = prompt(`Escolha: `).trim();
-    while (
-      materia != 1 &&
-      materia != 2 &&
-      materia != 3 &&
-      materia != 4 &&
-      materia != 5
-    ) {
-      console.log(`Escolha uma das matérias abaixo 
+      materia = prompt(`Escolha: `).trim();
+      while (
+        materia != 1 &&
+        materia != 2 &&
+        materia != 3 &&
+        materia != 4 &&
+        materia != 5
+      ) {
+        console.log(`Escolha uma das matérias abaixo 
 
      1) Português   2) Matemática   3) História   4) Geografia   5) Inglês
   `);
-      materia = prompt(`Escolha: `).trim();
+        materia = prompt(`Escolha: `).trim();
+      }
+
+      if (materia == 1) {
+        for (let index = conhecimento.ultPort; index < port.length; index++) {
+          // index recebe ultima posição de português (indice da pergunta)
+          console.log(port[index]); // retorna a pergunta de português
+          let resposta = prompt("R: ");
+          resposta = validaResposta(resposta); // validando a entrada de resposta na mesma forma que outros projetos, porém com função
+          if (respostasPortugues(resposta, index)) {
+            // ↑↑ validação retorno da função respostaPortugues SE a resposta é valida
+            conhecimento.upPort(10); // incremento de atributos
+            console.clear();
+            console.log(`Parabéns, você acertou!`);
+            console.log(
+              `Você ganhou ${conhecimento.port} % de conhecimento em Português!\n`
+            );
+          } else {
+            console.log(`Poxa, você errou :( `);
+          }
+          conhecimento.ultPort = index + 1; // pega a referencia da ultima posição de perguntas do periodo
+          if (conhecimento.ultPort % 3 == 0) {
+            // se ultima posição de português for divisivel por 3 encerra o primeiro periodo, sendo interrompido nas perguntas 3, 6 e 9.
+            break; // quebra de loop
+          }
+        }
+      } else if (materia == 2) {
+        for (let index = conhecimento.ultMat; index < mat.length; index++) {
+          console.log(mat[index]);
+          let resposta = prompt("R: ");
+          resposta = validaResposta(resposta);
+          if (respostasMatematica(resposta, index)) {
+            conhecimento.upMat(10);
+            console.clear();
+            console.log(`Parabéns, você acertou!`);
+            console.log(
+              `Você ganhou ${conhecimento.mat} % de conhecimento em Matemática !\n`
+            );
+          } else {
+            console.log(`Poxa, você errou :( `);
+          }
+          conhecimento.ultMat = index + 1;
+          if (conhecimento.ultMat % 3 == 0) {
+            break;
+          }
+        }
+      } else if (materia == 3) {
+        for (let index = conhecimento.ultHist; index < hist.length; index++) {
+          console.log(hist[index]);
+
+          let resposta = prompt("R: ");
+          resposta = validaResposta(resposta);
+          if (respostasHistoria(resposta, index)) {
+            conhecimento.upHist(10);
+            console.clear();
+            console.log(`Parabéns, você acertou!`);
+            console.log(
+              `Você ganhou ${conhecimento.hist} % de conhecimento em História !\n`
+            );
+          } else {
+            console.log(`Poxa, você errou :( `);
+          }
+          conhecimento.ultHist = index + 1;
+          if (conhecimento.ultHist % 3 == 0) {
+            break;
+          }
+        }
+      } else if (materia == 4) {
+        for (let index = conhecimento.ultGeo; index < geo.length; index++) {
+          console.log(geo[index]);
+          let resposta = prompt("R: ");
+          resposta = validaResposta(resposta);
+          if (respostasGeografia(resposta, index)) {
+            conhecimento.upGeo(10);
+            console.clear();
+            console.log(`Parabéns, você acertou!`);
+            console.log(
+              `Você ganhou ${conhecimento.geo} % de conhecimento em Geografia !\n`
+            );
+          } else {
+            console.log(`Poxa, você errou :( `);
+          }
+          conhecimento.ultGeo = index + 1;
+          if (conhecimento.ultGeo % 3 == 0) {
+            break;
+          }
+        }
+      } else if (materia == 5) {
+        for (let index = conhecimento.ultIng; index < ing.length; index++) {
+          console.log(ing[index]);
+          let resposta = prompt("R: ");
+          resposta = validaResposta(resposta);
+          if (respostasIngles(resposta, index)) {
+            conhecimento.upIng(10);
+            console.clear();
+            console.log(`Parabéns, você acertou!`);
+            console.log(
+              `Você ganhou ${conhecimento.ing} % de conhecimento em Inglês !\n`
+            );
+          } else {
+            console.log(`Poxa, você errou :( `);
+          }
+          conhecimento.ultIng = index + 1;
+          if (conhecimento.ultIng % 3 == 0) {
+            break;
+          }
+        }
+      }
     }
-   
-    if (materia == 1) {
-      for (let index = conhecimento.ultPort; index < port.length; index++) {
-        // index recebe ultima posição de português (indice da pergunta)
-        console.log(port[index]); // retorna a pergunta de português
-        let resposta = prompt("R: ");
-        resposta = validaResposta(resposta); // validando a entrada de resposta na mesma forma que outros projetos, porém com função
-        if (respostasPortugues(resposta, index)) {
-          // ↑↑ validação retorno da função respostaPortugues SE a resposta é valida
-          conhecimento.upPort(10); // incremento de atributos
-          console.clear();
-          console.log(`Parabéns, você acertou!`);
-          console.log(
-            `Você ganhou ${conhecimento.port} % de conhecimento em Português!\n`
-          );
-        } else {
-          console.log(`Poxa, você errou :( `);
-        }
-        conhecimento.ultPort = index + 1; // pega a referencia da ultima posição de perguntas do periodo
-        if (conhecimento.ultPort % 3 == 0) {
-          // se ultima posição de português for divisivel por 3 encerra o primeiro periodo, sendo interrompido nas perguntas 3, 6 e 9.
-          break; // quebra de loop
-        }
+    if (diaProva == 0) {
+      if (conhecimento.media() < 60) {
+        console.log(
+          `${resultado[0]}\n Sua média geral foi de: ${conhecimento.media}`
+        );
+      } else if (conhecimento.media >= 60 && conhecimento.media <= 75) {
+        console.log(
+          `${resultado[1]}\n Sua média geral foi de: ${conhecimento.media}`
+        );
+      } else if (conhecimento.media > 75 && conhecimento.media <= 99) {
+        console.log(
+          `${resultado[2]}\n Sua média geral foi de: ${conhecimento.media}`
+        );
       }
-    } else if (materia == 2) {
-      for (let index = conhecimento.ultMat; index < mat.length; index++) {
-        console.log(mat[index]);
-        let resposta = prompt("R: ");
-        resposta = validaResposta(resposta);
-        if (respostasMatematica(resposta, index)) {
-          conhecimento.upMat(10);
-          console.clear();
-          console.log(`Parabéns, você acertou!`);
-          console.log(
-            `Você ganhou ${conhecimento.mat} % de conhecimento em Matemática !\n`
-          );
-        } else {
-          console.log(`Poxa, você errou :( `);
-        }
-        conhecimento.ultMat = index + 1;
-        if (conhecimento.ultMat % 3 == 0) {
-          break;
-        }
+      console.log(conhecimento.media());
+
+      let pSair = +prompt("Deseja sair ? se sim digite 1: ");
+      if (pSair === 1) {
+        sair = true;
       }
-    } else if (materia == 3) {
-      for (let index = conhecimento.ultHist; index < hist.length; index++) {
-        console.log(hist[index]);
-        let resposta = prompt("R: ");
-        resposta = validaResposta(resposta);
-        if (respostasHistoria(resposta, index)) {
-          conhecimento.upHist(10);
-          console.clear();
-          console.log(`Parabéns, você acertou!`);
-          console.log(
-            `Você ganhou ${conhecimento.hist} % de conhecimento em História !\n`
-          );
-        } else {
-          console.log(`Poxa, você errou :( `);
-        }
-        conhecimento.ultHist = index + 1;
-        if (conhecimento.ultHist % 3 == 0) {
-          break;
-        }
-      }
-    } else if (materia == 4) {
-      for (let index = conhecimento.ultGeo; index < geo.length; index++) {
-        console.log(geo[index]);
-        let resposta = prompt("R: ");
-        resposta = validaResposta(resposta);
-        if (respostasGeografia(resposta, index)) {
-          conhecimento.upGeo(10);
-          console.clear();
-          console.log(`Parabéns, você acertou!`);
-          console.log(
-            `Você ganhou ${conhecimento.geo} % de conhecimento em Geografia !\n`
-          );
-        } else {
-          console.log(`Poxa, você errou :( `);
-        }
-        conhecimento.ultGeo = index + 1;
-        if (conhecimento.ultGeo % 3 == 0) {
-          break;
-        }
-      }
-    } else if (materia == 5) {
-      for (let index = conhecimento.ultIng; index < ing.length; index++) {
-        console.log(ing[index]);
-        let resposta = prompt("R: ");
-        resposta = validaResposta(resposta);
-        if (respostasIngles(resposta, index)) {
-          conhecimento.upIng(10);
-          console.clear();
-          console.log(`Parabéns, você acertou!`);
-          console.log(
-            `Você ganhou ${conhecimento.ing} % de conhecimento em Inglês !\n`
-          );
-        } else {
-          console.log(`Poxa, você errou :( `);
-        }
-        conhecimento.ultIng = index + 1;
-        if (conhecimento.ultIng % 3 == 0) {
-          break;
-        }
+      if (pSair != 1) {
+        conhecimento.port = 0;
+        conhecimento.ultPort = 0;
+        conhecimento.mat = 0;
+        conhecimento.ultMat = 0;
+        conhecimento.hist = 0;
+        conhecimento.ultHist = 0;
+        conhecimento.geo = 0;
+        conhecimento.ultGeo = 0;
+        conhecimento.ing = 0;
+        conhecimento.ultIng = 0;
+        dia = 0;
+        diaProva = 15;
+        console.clear();
       }
     }
   }
-  if (diaProva == 0) {
-    console.log(conhecimento.media());
-    let pSair = +prompt("Deseja sair ? se sim digite 1: ");
-    if (pSair === 1) {
-      sair = true;
-    }
-    if (pSair != 1) {
-      conhecimento.port = 0;
-      conhecimento.ultPort = 0;
-      conhecimento.mat = 0;
-      conhecimento.ultMat = 0;
-      conhecimento.hist = 0;
-      conhecimento.ultHist = 0;
-      conhecimento.geo = 0;
-      conhecimento.ultGeo = 0;
-      conhecimento.ing = 0;
-      conhecimento.ultIng = 0;
-      dia = 0;
-      diaProva = 15;
-      console.clear()
-    }
-  }
-}
 }
 function validaResposta(resposta) {
   while (
@@ -596,7 +616,7 @@ function respostasGeografia(resposta, indexPergunta) {
 }
 
 function respostasIngles(resposta, indexPergunta) {
-  const respIng = [];
+  const respIng = ["b", "c", "c", "a", "a", "d", "a", "d", "d"];
   if (respIng[indexPergunta] == resposta) {
     return true;
   }
