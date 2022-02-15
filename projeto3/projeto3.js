@@ -431,7 +431,7 @@ Inglês: ${conhecimento.ing} %\n`);
           resposta = validaResposta(resposta); // validando a entrada de resposta na mesma forma que outros projetos, porém com função
           if (respostasPortugues(resposta, index)) {
             // ↑↑ validação retorno da função respostaPortugues SE a resposta é valida
-            conhecimento.upPort(10); // incremento de atributos
+            conhecimento.upPort(11); // incremento de atributos
             console.clear();
             console.log(`Parabéns, você acertou!`);
             console.log(
@@ -452,7 +452,7 @@ Inglês: ${conhecimento.ing} %\n`);
           let resposta = prompt("R: ");
           resposta = validaResposta(resposta);
           if (respostasMatematica(resposta, index)) {
-            conhecimento.upMat(10);
+            conhecimento.upMat(11);
             console.clear();
             console.log(`Parabéns, você acertou!`);
             console.log(
@@ -473,7 +473,7 @@ Inglês: ${conhecimento.ing} %\n`);
           let resposta = prompt("R: ");
           resposta = validaResposta(resposta);
           if (respostasHistoria(resposta, index)) {
-            conhecimento.upHist(10);
+            conhecimento.upHist(11);
             console.clear();
             console.log(`Parabéns, você acertou!`);
             console.log(
@@ -493,7 +493,7 @@ Inglês: ${conhecimento.ing} %\n`);
           let resposta = prompt("R: ");
           resposta = validaResposta(resposta);
           if (respostasGeografia(resposta, index)) {
-            conhecimento.upGeo(10);
+            conhecimento.upGeo(11);
             console.clear();
             console.log(`Parabéns, você acertou!`);
             console.log(
@@ -513,7 +513,7 @@ Inglês: ${conhecimento.ing} %\n`);
           let resposta = prompt("R: ");
           resposta = validaResposta(resposta);
           if (respostasIngles(resposta, index)) {
-            conhecimento.upIng(10);
+            conhecimento.upIng(11);
             console.clear();
             console.log(`Parabéns, você acertou!`);
             console.log(
@@ -543,8 +543,7 @@ Inglês: ${conhecimento.ing} %\n`);
           `${resultado[2]}\n Sua média geral foi de: ${conhecimento.media}`
         );
       }
-      console.log(conhecimento.media());
-
+      
       let pSair = +prompt("Deseja sair ? se sim digite 1: ");
       if (pSair === 1) {
         sair = true;
