@@ -428,7 +428,7 @@ Inglês: ${conhecimento.ing} %\n`);
         block = false;
         for (let index = conhecimento.ultMat; index < mat.length; index++) {
           console.log(mat[index]);
-          let resposta = prompt("\nR: ").trim().toLowerCase();
+          let resposta = prompt("R: ").trim().toLowerCase();
           resposta = validaResposta(resposta);
           if (respostasMatematica(resposta, index)) {
             conhecimento.upMat(11);
@@ -453,7 +453,7 @@ Inglês: ${conhecimento.ing} %\n`);
         for (let index = conhecimento.ultHist; index < hist.length; index++) {
           console.log(hist[index]);
 
-          let resposta = prompt("\nR: ").trim().toLowerCase();
+          let resposta = prompt("R: ").trim().toLowerCase();
           resposta = validaResposta(resposta);
           if (respostasHistoria(resposta, index)) {
             conhecimento.upHist(11);
@@ -477,7 +477,7 @@ Inglês: ${conhecimento.ing} %\n`);
         block = false;
         for (let index = conhecimento.ultGeo; index < geo.length; index++) {
           console.log(geo[index]);
-          let resposta = prompt("\nR: ").trim().toLowerCase();
+          let resposta = prompt("R: ").trim().toLowerCase();
           resposta = validaResposta(resposta);
           if (respostasGeografia(resposta, index)) {
             conhecimento.upGeo(11);
@@ -501,7 +501,7 @@ Inglês: ${conhecimento.ing} %\n`);
         block = false;
         for (let index = conhecimento.ultIng; index < ing.length; index++) {
           console.log(ing[index]);
-          let resposta = prompt("\nR: ").trim().toLowerCase();
+          let resposta = prompt("R: ").trim().toLowerCase();
           resposta = validaResposta(resposta);
           if (respostasIngles(resposta, index)) {
             conhecimento.upIng(11);
