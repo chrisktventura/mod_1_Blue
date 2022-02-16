@@ -371,31 +371,40 @@ d) On `,
 ];
 
 let turno = ["Turno Manhã", "Turno Tarde", "Turno Noite"];
-let sair = false;
-let diaProva = 5;
-let dia = 0;
 let resultado = [
   "Infelizmente você reprovou. Precisa estudar mais!",
   "Você alcançou uma boa pontuação, mas pode melhorar!",
   "Parabéns! Você com certeza vai mandar muito bem na prova!",
 ]; // ARRAY para exibição de resultados ao final da aplicação
-
+let ulTurno = "";
+let sair = false;
+let diaProva = 5;
+let dia = 0;
+let block = false;
 while (true) {
   if (sair) {
     break;
   }
   for (let i = 0; i < diaProva; i++) {
-    dia++;
-    diaProva--;
+    // laço de rodada, dia
+    if (!block) {
+      dia++;
+      diaProva--;
+    }
 
-    for (let i = 0; i < turno.length; i++) {
+    for (let j = 0; j < turno.length; j++) {
+      // laço de turno, manhã, tarde, noite
       console.log(`Bem-Vindo ao simulado de estudos básicos.`);
-
-      console.log(`${turno[i]} dia ${dia}`);
 
       console.log(
         "---------------------------------------------------------------"
       );
+      if (block) {
+        // j--;
+      }
+      console.log(`${turno[j]} dia ${dia}`);
+
+      console.log();
       console.log(`Aqui está os seus resultados: 
 
 Português: ${conhecimento.port} %
@@ -422,21 +431,30 @@ Inglês: ${conhecimento.ing} %\n`);
   `);
         materia = prompt(`Escolha: `).trim();
       }
-
+      while(materia == 1 && conhecimento.ultPort == port.length) {
+        block = true;
+        materia = +prompt("Português já concluido, escolha outra matéria: ");
+      }
+        console.log('materia ', materia)
+        console.log('i', i)
+        console.log('j ', j)
+      
       if (materia == 1) {
+        block = false;
+        
         for (let index = conhecimento.ultPort; index < port.length; index++) {
+          console.log('index ', index)
+          
           // index recebe ultima posição de português (indice da pergunta)
           console.log(port[index]); // retorna a pergunta de português
-          let resposta = prompt("R: ");
+          let resposta = prompt("R: ").trim().toLowerCase();
           resposta = validaResposta(resposta); // validando a entrada de resposta na mesma forma que outros projetos, porém com função
           if (respostasPortugues(resposta, index)) {
             // ↑↑ validação retorno da função respostaPortugues SE a resposta é valida
             conhecimento.upPort(11); // incremento de atributos
             console.clear();
             console.log(`Parabéns, você acertou!`);
-            console.log(
-              `Você ganhou ${conhecimento.port} % de conhecimento em Português!\n`
-            );
+            console.log(`Você ganhou + 11 % de conhecimento em Português!\n`);
           } else {
             console.log(`Poxa, você errou :( `);
           }
@@ -446,126 +464,145 @@ Inglês: ${conhecimento.ing} %\n`);
             break; // quebra de loop
           }
         }
-      } else if (materia == 2) {
-        for (let index = conhecimento.ultMat; index < mat.length; index++) {
-          console.log(mat[index]);
-          let resposta = prompt("R: ");
-          resposta = validaResposta(resposta);
-          if (respostasMatematica(resposta, index)) {
-            conhecimento.upMat(11);
-            console.clear();
-            console.log(`Parabéns, você acertou!`);
-            console.log(
-              `Você ganhou ${conhecimento.mat} % de conhecimento em Matemática !\n`
-            );
-          } else {
-            console.log(`Poxa, você errou :( `);
-          }
-          conhecimento.ultMat = index + 1;
-          if (conhecimento.ultMat % 3 == 0) {
-            break;
-          }
+      }
+    }
+    while (materia == 2 && conhecimento.ultMat == mat.length) {
+      block = true;
+      materia = +prompt("Matemática já concluido, escolha outra matéria: ");
+    }
+    if (materia == 2) {
+      block = false;
+      for (let index = conhecimento.ultMat; index < mat.length; index++) {
+        
+        console.log(mat[index]);
+        let resposta = prompt("\nR: \n").trim().toLowerCase();
+        resposta = validaResposta(resposta);
+        if (respostasMatematica(resposta, index)) {
+          conhecimento.upMat(11);
+          console.clear();
+          console.log(`Parabéns, você acertou!`);
+          console.log(`Você ganhou + 11 % de conhecimento em Matemática !\n`);
+        } else {
+          console.log(`Poxa, você errou :( `);
         }
-      } else if (materia == 3) {
-        for (let index = conhecimento.ultHist; index < hist.length; index++) {
-          console.log(hist[index]);
-
-          let resposta = prompt("R: ");
-          resposta = validaResposta(resposta);
-          if (respostasHistoria(resposta, index)) {
-            conhecimento.upHist(11);
-            console.clear();
-            console.log(`Parabéns, você acertou!`);
-            console.log(
-              `Você ganhou ${conhecimento.hist} % de conhecimento em História !\n`
-            );
-          } else {
-            console.log(`Poxa, você errou :( `);
-          }
-          conhecimento.ultHist = index + 1;
-          if (conhecimento.ultHist % 3 == 0) {
-            break;
-          }
-        }
-      } else if (materia == 4) {
-        for (let index = conhecimento.ultGeo; index < geo.length; index++) {
-          console.log(geo[index]);
-          let resposta = prompt("R: ");
-          resposta = validaResposta(resposta);
-          if (respostasGeografia(resposta, index)) {
-            conhecimento.upGeo(11);
-            console.clear();
-            console.log(`Parabéns, você acertou!`);
-            console.log(
-              `Você ganhou ${conhecimento.geo} % de conhecimento em Geografia !\n`
-            );
-          } else {
-            console.log(`Poxa, você errou :( `);
-          }
-          conhecimento.ultGeo = index + 1;
-          if (conhecimento.ultGeo % 3 == 0) {
-            break;
-          }
-        }
-      } else if (materia == 5) {
-        for (let index = conhecimento.ultIng; index < ing.length; index++) {
-          console.log(ing[index]);
-          let resposta = prompt("R: ");
-          resposta = validaResposta(resposta);
-          if (respostasIngles(resposta, index)) {
-            conhecimento.upIng(11);
-            console.clear();
-            console.log(`Parabéns, você acertou!`);
-            console.log(
-              `Você ganhou ${conhecimento.ing} % de conhecimento em Inglês !\n`
-            );
-          } else {
-            console.log(`Poxa, você errou :( `);
-          }
-          conhecimento.ultIng = index + 1;
-          if (conhecimento.ultIng % 3 == 0) {
-            break;
-          }
+        conhecimento.ultMat = index + 1;
+        if (conhecimento.ultMat % 3 == 0) {
+          break;
         }
       }
     }
-    if (diaProva == 0) {
-      if (conhecimento.media() < 60) {
-        console.log(
-          `${resultado[0]}\n Sua média geral foi de: ${conhecimento.media}`
-        );
-      } else if (conhecimento.media >= 60 && conhecimento.media <= 75) {
-        console.log(
-          `${resultado[1]}\n Sua média geral foi de: ${conhecimento.media}`
-        );
-      } else if (conhecimento.media > 75 && conhecimento.media <= 99) {
-        console.log(
-          `${resultado[2]}\n Sua média geral foi de: ${conhecimento.media}`
-        );
+    if (materia == 3 && conhecimento.ultHist == hist.length) {
+      block = true;
+      materia = +prompt("História já concluido, escolha outra matéria: ");
+    }
+    if (materia == 3 && conhecimento.ultHist != hist.length) {
+      block = false;
+      for (let index = conhecimento.ultHist; index < hist.length; index++) {
+        console.log(hist[index]);
+
+        let resposta = prompt("\nR: \n").trim().toLowerCase();
+        resposta = validaResposta(resposta);
+        if (respostasHistoria(resposta, index)) {
+          conhecimento.upHist(11);
+          console.clear();
+          console.log(`Parabéns, você acertou!`);
+          console.log(`Você ganhou + 11 % de conhecimento em História !\n`);
+        } else {
+          console.log(`Poxa, você errou :( `);
+        }
+        conhecimento.ultHist = index + 1;
+        if (conhecimento.ultHist % 3 == 0) {
+          break;
+        }
       }
-      
-      let pSair = +prompt("Deseja sair ? se sim digite 1: ");
-      if (pSair === 1) {
-        sair = true;
+    }
+    if (materia == 4 && conhecimento.ultGeo == geo.length) {
+      block = true;
+      materia = +prompt("Geografia já concluido, escolha outra matéria: ");
+    }
+    if (materia == 4 && conhecimento.ultGeo != geo.length) {
+      block = false;
+      for (let index = conhecimento.ultGeo; index < geo.length; index++) {
+        console.log(geo[index]);
+        let resposta = prompt("\nR: ").trim().toLowerCase();
+        resposta = validaResposta(resposta);
+        if (respostasGeografia(resposta, index)) {
+          conhecimento.upGeo(11);
+          console.clear();
+          console.log(`Parabéns, você acertou!`);
+          console.log(`Você ganhou + 11 % de conhecimento em Geografia !\n`);
+        } else {
+          console.log(`Poxa, você errou :( `);
+        }
+        conhecimento.ultGeo = index + 1;
+        if (conhecimento.ultGeo % 3 == 0) {
+          break;
+        }
       }
-      if (pSair != 1) {
-        conhecimento.port = 0;
-        conhecimento.ultPort = 0;
-        conhecimento.mat = 0;
-        conhecimento.ultMat = 0;
-        conhecimento.hist = 0;
-        conhecimento.ultHist = 0;
-        conhecimento.geo = 0;
-        conhecimento.ultGeo = 0;
-        conhecimento.ing = 0;
-        conhecimento.ultIng = 0;
-        dia = 0;
-        diaProva = 15;
-        console.clear();
+    }
+    if (materia == 5 && conhecimento.ultIng == ing.length) {
+      block = true;
+      materia = +prompt("Inglês já concluido, escolha outra matéria: ");
+    }
+    if (materia == 5 && conhecimento.ultIng != ing.length) {
+      block = false;
+      for (let index = conhecimento.ultIng; index < ing.length; index++) {
+        console.log(ing[index]);
+        let resposta = prompt("\nR: \n").trim().toLowerCase();
+        resposta = validaResposta(resposta);
+        if (respostasIngles(resposta, index)) {
+          conhecimento.upIng(11);
+          console.clear();
+          console.log(`Parabéns, você acertou!`);
+          console.log(`Você ganhou + 11 % de conhecimento em Inglês !\n`);
+        } else {
+          console.log(`Sorry !  the answer is incorrect :(`);
+        }
+        conhecimento.ultIng = index + 1;
+        if (conhecimento.ultIng % 3 == 0) {
+          break;
+        }
       }
     }
   }
+
+  if (diaProva == 0) {
+    if (conhecimento.media() < 60) {
+      console.log(
+        `${resultado[0]}\n Sua média geral foi de: ${conhecimento.media}`
+      );
+    } else if (conhecimento.media >= 60 && conhecimento.media <= 75) {
+      console.log(
+        `${resultado[1]}\n Sua média geral foi de: ${conhecimento.media}`
+      );
+    } else if (conhecimento.media > 75 && conhecimento.media <= 99) {
+      console.log(
+        `${resultado[2]}\n Sua média geral foi de: ${conhecimento.media}`
+      );
+    }
+
+    let pSair = +prompt("Deseja sair ? se sim digite 1: ");
+    if (pSair === 1) {
+      sair = true;
+    }
+    if (pSair != 1) {
+      conhecimento.port = 0;
+      conhecimento.ultPort = 0;
+      conhecimento.mat = 0;
+      conhecimento.ultMat = 0;
+      conhecimento.hist = 0;
+      conhecimento.ultHist = 0;
+      conhecimento.geo = 0;
+      conhecimento.ultGeo = 0;
+      conhecimento.ing = 0;
+      conhecimento.ultIng = 0;
+      dia = 0;
+      diaProva = 5;
+      console.clear();
+    }
+  }
 }
+
 function validaResposta(resposta) {
   while (
     resposta != "a" &&
@@ -575,7 +612,7 @@ function validaResposta(resposta) {
     resposta != "e"
   ) {
     console.log("Escolha uma das alternativas");
-    resposta = prompt("R: ");
+    resposta = prompt("R: ").trim().toLowerCase();
   }
   return resposta;
 }
@@ -585,9 +622,9 @@ function respostasPortugues(resposta, indexPergunta) {
   const respPort = ["a", "c", "e", "d", "d", "e", "c", "a", "e"];
   if (respPort[indexPergunta] == resposta) {
     // O ARRAY de respostas recebe o INDICE da pergunta para que possa ser comparado com a resposta do USUARIO, que também é passado na função.
-    return true;
+    return true; // caso a resposta do usuario sejá igual a posição do ARRAY de resposta, retornará true e estará certa.
   }
-  return false;
+  return false; // se a resposta do usuario não tiver o mesmo valor, retornará false e estará errada
 }
 
 function respostasMatematica(resposta, indexPergunta) {
