@@ -523,15 +523,15 @@ Inglês: ${conhecimento.ing} %\n`);
   if (diaProva == 0) {
     if (conhecimento.media() < 60) {
       console.log(
-        `${resultado[0]}\n Sua média geral foi de: ${conhecimento.media}`
+        `${resultado[0]}\n Sua média geral foi de: ${conhecimento.media()}`
       );
-    } else if (conhecimento.media >= 60 && conhecimento.media <= 75) {
+    } else if (conhecimento.media() >= 60 && conhecimento.media() <= 75) {
       console.log(
-        `${resultado[1]}\n Sua média geral foi de: ${conhecimento.media}`
+        `${resultado[1]}\n Sua média geral foi de: ${conhecimento.media()}`
       );
-    } else if (conhecimento.media > 75 && conhecimento.media <= 99) {
+    } else if (conhecimento.media() > 75 && conhecimento.media() <= 99) {
       console.log(
-        `${resultado[2]}\n Sua média geral foi de: ${conhecimento.media}`
+        `${resultado[2]}\n Sua média geral foi de: ${conhecimento.media()}`
       );
     }
 
