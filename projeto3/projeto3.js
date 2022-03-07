@@ -343,7 +343,7 @@ let resultado = [
   "Parabéns! Você com certeza vai mandar muito bem na prova!",
 ]; // ARRAY para exibição de resultados ao final da aplicação
 let sair = false;
-let diaProva = 5;
+let diaProva = 5; // contagem regressiva de dias
 let dia = 0;
 let block = false;
 while (true) {
@@ -352,7 +352,7 @@ while (true) {
   }
   for (let i = 0; i < diaProva; i++) {
     // laço de rodada, dia
-    if (!block) {
+    if (!block) {   
       dia++;
       diaProva--;
     }
@@ -393,7 +393,7 @@ Inglês: ${conhecimento.ing} %\n`);
   `);
         materia = prompt(`Escolha: \n`).trim();
       }
-      if (materia == 1 && conhecimento.ultPort == port.length) {
+      if (materia == 1 && conhecimento.ultPort == port.length) { // esse if bloqueia a possibilidade de entrar na matéria concluida travando o turno e ciclo
         block = true;
         materia = +prompt("Português já concluido, escolha outra matéria: ");
       }
